@@ -25,7 +25,7 @@ const packs = [
     nom: "3D EMOJI",
     stickers: 17,
     taille: "3.9 MB",
-    lien: "https://whatsapp.com/channel/0029VbCRcpAIt5ro4kShr414/100",
+    lien: "https://whatsapp.com/channel/0029VbCRcpAIt5ro4kShr414/100"
     badge: "Populaire",
     nouveauBadge: false
   },
