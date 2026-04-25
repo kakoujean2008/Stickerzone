@@ -5,23 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="pageTitle">Evanns Name — Transforme ton nom en art</title>
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Génère un fond d'écran unique avec ton prénom grâce à l'IA. 40+ styles artistiques, haute résolution, 100% gratuit et illimité." />
+  <meta name="description" content="Génère un fond d'écran unique avec ton prénom grâce à l'IA. 60+ styles artistiques, haute résolution, 100% gratuit et illimité." />
   <meta name="keywords" content="fond d'écran prénom, wallpaper nom, IA générateur image, fond écran personnalisé, wallpaper AI" />
   <meta name="author" content="Evanns Name" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Evanns Name — Transforme ton nom en art" />
   <meta property="og:description" content="Génère un fond d'écran unique avec ton prénom grâce à l'IA FLUX. 100% gratuit, illimité." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://image.pollinations.ai/prompt/luxury%20gold%20wallpaper%20AI%20art%20name?width=1200&height=630&model=flux&nologo=true" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Evanns Name — Transforme ton nom en art" />
   <meta name="twitter:description" content="Génère un fond d'écran unique avec ton prénom grâce à l'IA. 100% gratuit." />
 
-  <!-- Monetag -->
   <meta name="monetag" content="05095801154a805a62f912ffd56c8bba">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,6 +31,7 @@
       --border: #1e1e24; --gold: #c9a84c; --gold2: #f0d080;
       --silver: #a0a0b0; --white: #f4f2ee;
       --glow: rgba(201,168,76,0.25); --radius: 14px;
+      --green: #4caf74; --red: #e05555; --orange: #e09a40;
     }
     html { scroll-behavior: smooth; }
     body { background:var(--black); color:var(--white); font-family:'DM Sans',sans-serif; min-height:100vh; overflow-x:hidden; cursor:none; }
@@ -49,7 +46,6 @@
     .nav-logo span { color:var(--white); }
     .nav-tag { font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);opacity:.7; }
 
-    /* COUNTER BADGE */
     .counter-badge {
       display:inline-flex;align-items:center;gap:8px;
       background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);
@@ -101,19 +97,63 @@
     }
     .btn-surprise:hover { background:rgba(201,168,76,0.15);box-shadow:0 0 20px rgba(201,168,76,.15); }
 
-    .style-scroll-wrap { max-height:230px;overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--gold) var(--border); }
+    /* ── LIKED STYLES BANNER ── */
+    .liked-styles-banner {
+      display:none;
+      width:100%;max-width:820px;
+      background:rgba(76,175,116,0.07);
+      border:1px solid rgba(76,175,116,0.25);
+      border-radius:16px;padding:16px 20px;margin-bottom:24px;
+      animation:fadeUp .5s forwards;
+    }
+    .liked-styles-banner.visible { display:block; }
+    .liked-banner-label { font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--green);margin-bottom:10px; }
+    .liked-styles-row { display:flex;flex-wrap:wrap;gap:6px; }
+    .liked-tag {
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(76,175,116,0.12);border:1px solid rgba(76,175,116,0.3);
+      border-radius:50px;padding:5px 12px;font-size:.72rem;color:var(--green);
+      cursor:none;transition:all .2s;
+    }
+    .liked-tag:hover { background:rgba(76,175,116,0.2); }
+    .liked-tag-remove { opacity:.5;font-size:.8rem;cursor:none; }
+    .liked-tag-remove:hover { opacity:1; }
+
+    .style-scroll-wrap { max-height:260px;overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--gold) var(--border); }
     .style-scroll-wrap::-webkit-scrollbar { width:4px; }
     .style-scroll-wrap::-webkit-scrollbar-track { background:var(--border);border-radius:4px; }
     .style-scroll-wrap::-webkit-scrollbar-thumb { background:var(--gold);border-radius:4px; }
     .style-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px; }
-    .style-btn { padding:9px 10px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;color:var(--silver);font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.03em;cursor:none;transition:all .2s;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    .style-btn { padding:9px 10px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;color:var(--silver);font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.03em;cursor:none;transition:all .2s;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative; }
     .style-btn:hover { border-color:rgba(201,168,76,.35);color:var(--white);background:rgba(201,168,76,.05); }
     .style-btn.active { background:rgba(201,168,76,.14);border-color:var(--gold);color:var(--gold);box-shadow:0 0 16px rgba(201,168,76,.12); }
+    .style-btn.liked { border-color:rgba(76,175,116,0.4); }
+    .style-btn.liked::after { content:'♥';position:absolute;top:3px;right:5px;font-size:.55rem;color:var(--green);opacity:.7; }
 
     .res-row { display:flex;gap:10px;flex-wrap:wrap; }
     .res-btn { padding:9px 16px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;color:var(--silver);font-family:'DM Sans',sans-serif;font-size:.75rem;cursor:none;transition:all .2s; }
     .res-btn:hover { border-color:rgba(201,168,76,.3);color:var(--white); }
     .res-btn.active { background:rgba(201,168,76,.12);border-color:var(--gold);color:var(--gold); }
+
+    /* ── IMAGE REFERENCE UPLOAD ── */
+    .upload-zone {
+      width:100%;border:2px dashed var(--border);border-radius:var(--radius);
+      padding:32px 20px;text-align:center;cursor:none;transition:all .3s;
+      position:relative;background:rgba(255,255,255,.015);
+    }
+    .upload-zone:hover,.upload-zone.drag-over {
+      border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.04);
+    }
+    .upload-zone input[type=file] { position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:none; }
+    .upload-icon { font-size:2rem;margin-bottom:10px;opacity:.5; }
+    .upload-text { font-size:.8rem;color:var(--silver);line-height:1.6; }
+    .upload-text strong { color:var(--gold); }
+    .upload-preview-wrap { display:none;position:relative;margin-top:14px; }
+    .upload-preview-wrap.visible { display:block; }
+    .upload-preview { width:100%;max-height:200px;object-fit:cover;border-radius:10px;border:1px solid var(--border); }
+    .upload-preview-label { font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-top:8px;display:block; }
+    .upload-remove { position:absolute;top:8px;right:8px;background:rgba(5,5,7,.8);border:1px solid rgba(224,85,85,.4);border-radius:50px;padding:4px 10px;font-size:.7rem;color:#e07070;cursor:none;transition:all .2s; }
+    .upload-remove:hover { background:rgba(224,85,85,.15); }
 
     .btn-generate { width:100%;margin-top:8px;padding:20px 32px;background:linear-gradient(135deg,#b8922a 0%,var(--gold) 40%,var(--gold2) 70%,#b8922a 100%);background-size:200% 200%;border:none;border-radius:var(--radius);color:#0d0a05;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.22em;cursor:none;transition:transform .2s,box-shadow .3s;position:relative;overflow:hidden;animation:shimmer 4s ease-in-out infinite; }
     @keyframes shimmer { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
@@ -125,7 +165,6 @@
     .result-area.visible { display:flex; }
     .result-frame { width:100%;border-radius:20px;overflow:hidden;border:1px solid var(--border);background:var(--panel);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(201,168,76,.08);position:relative; }
 
-    /* Blur preview */
     .img-blur-wrap { position:relative;width:100%; }
     .img-blur { width:100%;display:block;border-radius:20px;filter:blur(20px);transform:scale(1.05);transition:filter .8s ease,transform .8s ease; }
     .img-blur.loaded { filter:blur(0);transform:scale(1); }
@@ -141,27 +180,69 @@
     .error-msg { display:none;background:rgba(200,50,50,.08);border:1px solid rgba(200,50,50,.25);border-radius:12px;padding:18px 24px;color:#e07070;font-size:.88rem;text-align:center;width:100%;max-width:820px;margin-top:20px; }
     .error-msg.show { display:block; }
 
-    /* Action buttons row */
     .action-row { display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px;width:100%; }
 
     .btn-download { padding:14px 28px;background:transparent;border:1px solid var(--gold);border-radius:var(--radius);color:var(--gold);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.2em;cursor:none;transition:all .3s;display:flex;align-items:center;gap:10px; }
     .btn-download:hover { background:rgba(201,168,76,.1);box-shadow:0 0 30px rgba(201,168,76,.2);transform:translateY(-2px); }
     .btn-download svg { width:16px;height:16px; }
 
-    /* Share button */
     .btn-share { padding:14px 28px;background:transparent;border:1px solid rgba(160,160,176,0.3);border-radius:var(--radius);color:var(--silver);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.2em;cursor:none;transition:all .3s;display:flex;align-items:center;gap:10px; }
     .btn-share:hover { border-color:rgba(160,160,176,0.6);color:var(--white);transform:translateY(-2px); }
 
     .dl-notice { font-size:.75rem;color:var(--silver);text-align:center;max-width:440px;line-height:1.65;padding:10px 16px;border:1px solid rgba(201,168,76,.18);border-radius:10px;background:rgba(201,168,76,.04); }
     .dl-notice strong { color:var(--gold); }
 
-    /* GALLERY */
+    /* ── FEEDBACK ZONE ── */
+    .feedback-zone {
+      display:none;
+      width:100%;margin-top:28px;
+      background:var(--panel);border:1px solid var(--border);
+      border-radius:20px;padding:28px 32px;
+      flex-direction:column;align-items:center;gap:16px;
+      animation:fadeUp .5s forwards;
+      position:relative;overflow:hidden;
+    }
+    .feedback-zone::before { content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent); }
+    .feedback-zone.visible { display:flex; }
+    .feedback-title { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--white);text-align:center; }
+    .feedback-sub { font-size:.72rem;color:var(--silver);opacity:.6;text-align:center; }
+    .feedback-btns { display:flex;gap:12px;flex-wrap:wrap;justify-content:center; }
+
+    .fb-btn {
+      display:flex;flex-direction:column;align-items:center;gap:6px;
+      padding:16px 24px;border-radius:var(--radius);
+      font-family:'DM Sans',sans-serif;font-size:.78rem;letter-spacing:.08em;
+      cursor:none;transition:all .25s;border:1px solid transparent;
+    }
+    .fb-btn-emoji { font-size:1.6rem; }
+    .fb-btn-yes { background:rgba(76,175,116,.08);border-color:rgba(76,175,116,.25);color:var(--green); }
+    .fb-btn-yes:hover { background:rgba(76,175,116,.18);border-color:rgba(76,175,116,.5);transform:translateY(-2px);box-shadow:0 8px 24px rgba(76,175,116,.15); }
+    .fb-btn-little { background:rgba(224,154,64,.08);border-color:rgba(224,154,64,.25);color:var(--orange); }
+    .fb-btn-little:hover { background:rgba(224,154,64,.18);border-color:rgba(224,154,64,.5);transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,154,64,.15); }
+    .fb-btn-no { background:rgba(224,85,85,.08);border-color:rgba(224,85,85,.25);color:var(--red); }
+    .fb-btn-no:hover { background:rgba(224,85,85,.18);border-color:rgba(224,85,85,.5);transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,85,85,.15); }
+
+    .feedback-response {
+      display:none;
+      background:rgba(255,255,255,.03);border-radius:12px;
+      padding:16px 20px;text-align:center;width:100%;
+      font-size:.84rem;line-height:1.7;color:var(--silver);
+      animation:fadeUp .4s forwards;
+    }
+    .feedback-response.visible { display:block; }
+    .feedback-response strong { color:var(--gold); }
+    .feedback-response.green strong { color:var(--green); }
+    .feedback-response.orange strong { color:var(--orange); }
+    .feedback-response.red strong { color:var(--red); }
+
+    /* ── GALLERY ── */
     .section-gallery { position:relative;z-index:2;padding:40px 24px 80px;display:flex;flex-direction:column;align-items:center; }
     .gallery-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;width:100%;max-width:900px;margin-top:32px; }
     .gallery-item { position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/9;cursor:none;transition:transform .3s,border-color .3s;background:var(--panel); }
     .gallery-item:hover { transform:scale(1.03);border-color:rgba(201,168,76,.4); }
     .gallery-item img { width:100%;height:100%;object-fit:cover;display:block; }
     .gallery-item-name { position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(0deg,rgba(5,5,7,.9),transparent);font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.1em;color:var(--gold); }
+    .gallery-item-heart { position:absolute;top:8px;right:8px;font-size:.8rem;opacity:.8; }
     .gallery-empty { color:var(--silver);font-size:.88rem;opacity:.5;font-style:italic; }
 
     .section-features { position:relative;z-index:2;padding:80px 24px 100px;display:flex;flex-direction:column;align-items:center; }
@@ -176,7 +257,6 @@
     .footer-logo { font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.12em;color:var(--gold);opacity:.7;margin-bottom:10px; }
     .footer-copy { font-size:.72rem;color:var(--silver);opacity:.4;letter-spacing:.12em; }
 
-    /* Toast notification */
     .toast { position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);z-index:9997;background:var(--panel);border:1px solid rgba(201,168,76,.3);border-radius:50px;padding:12px 24px;font-size:.82rem;color:var(--gold);letter-spacing:.08em;transition:transform .4s cubic-bezier(.34,1.56,.64,1);pointer-events:none; }
     .toast.show { transform:translateX(-50%) translateY(0); }
 
@@ -188,6 +268,9 @@
       .style-grid{grid-template-columns:repeat(2,1fr)}
       #cursor,#cursor-ring{display:none}
       body{cursor:auto}
+      .upload-zone input[type=file]{cursor:pointer}
+      .style-btn{cursor:pointer}
+      .btn-surprise,.btn-generate,.res-btn,.fb-btn,.btn-download,.btn-share{cursor:pointer}
     }
   </style>
 </head>
@@ -219,6 +302,13 @@
 
 <section class="section-gen">
   <div class="section-label">Générateur</div>
+
+  <!-- Liked styles banner -->
+  <div class="liked-styles-banner" id="likedStylesBanner">
+    <div class="liked-banner-label">♥ Tes styles favoris</div>
+    <div class="liked-styles-row" id="likedStylesRow"></div>
+  </div>
+
   <div class="gen-card">
 
     <div class="field-group">
@@ -232,45 +322,31 @@
       <textarea id="descInput" class="field-textarea" placeholder="Ex : Nuit dorée, galaxie violette, lettres en flammes bleues…"></textarea>
     </div>
 
+    <!-- IMAGE REFERENCE UPLOAD -->
     <div class="field-group">
-      <label class="field-label">✦ Style artistique <span class="field-hint">— scroll pour tout voir</span></label>
+      <label class="field-label">✦ Image de référence <span class="field-hint">(optionnel — montre ton style)</span></label>
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="refImageInput" accept="image/*" />
+        <div id="uploadPlaceholder">
+          <div class="upload-icon">🖼️</div>
+          <div class="upload-text">
+            Glisse une image ici ou <strong>clique pour parcourir</strong><br>
+            <span style="opacity:.5;font-size:.72rem;">PNG, JPG, WEBP · max 10 Mo · l'IA s'inspirera de ton image</span>
+          </div>
+        </div>
+      </div>
+      <div class="upload-preview-wrap" id="uploadPreviewWrap">
+        <img id="uploadPreview" class="upload-preview" src="" alt="Référence" />
+        <span class="upload-preview-label" id="uploadStatusLabel">✦ Analyse Claude en cours…</span>
+        <button class="upload-remove" onclick="removeRefImage()">✕ Retirer</button>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">✦ Style artistique <span class="field-hint">— 60+ styles, scroll pour tout voir</span></label>
       <div class="style-scroll-wrap">
         <div class="style-grid" id="styleGrid">
-          <button class="style-btn" data-style="">🚫 Aucun style</button>
-          <button class="style-btn active" data-style="cinematic photorealism, dramatic film lighting, movie poster">🎬 Cinématique</button>
-          <button class="style-btn" data-style="hyper-realistic photography, studio lighting, 8K ultra detail">📷 Hyper-Réaliste</button>
-          <button class="style-btn" data-style="dark fantasy digital art, ominous shadows, gothic atmosphere">🌑 Dark Fantasy</button>
-          <button class="style-btn" data-style="epic high fantasy concept art, magical world, dragons">⚔️ Epic Fantasy</button>
-          <button class="style-btn" data-style="neon cyberpunk futuristic city, rain reflections, neon signs">⚡ Cyberpunk</button>
-          <button class="style-btn" data-style="sci-fi space opera, alien planet, futuristic spacecraft">🚀 Sci-Fi</button>
-          <button class="style-btn" data-style="luxury gold abstract art, pure black background, ornate golden details">✨ Luxe Doré</button>
-          <button class="style-btn" data-style="art deco luxury gold geometric patterns 1920s gatsby vintage">🏛️ Art Déco</button>
-          <button class="style-btn" data-style="baroque ornate oil painting, gold leaf, rich dramatic colors">🖼️ Baroque</button>
-          <button class="style-btn" data-style="cosmic nebula 3D render galaxy stars milky way deep space">🌌 Cosmique</button>
-          <button class="style-btn" data-style="deep space astronomy NASA photograph aurora borealis">🔭 Deep Space</button>
-          <button class="style-btn" data-style="bioluminescent ocean underwater glowing sea creatures">🌊 Bioluminescent</button>
-          <button class="style-btn" data-style="watercolor soft pastel dreamy aesthetic delicate brushstrokes">🎨 Aquarelle</button>
-          <button class="style-btn" data-style="oil painting impressionist Monet style visible brushstrokes">🖌️ Impressionniste</button>
-          <button class="style-btn" data-style="traditional Japanese ukiyo-e woodblock print Hokusai style">🗾 Ukiyo-e</button>
-          <button class="style-btn" data-style="retrowave synthwave purple pink sunset 80s retro neon grid">🌃 Retrowave</button>
-          <button class="style-btn" data-style="vaporwave aesthetic pastel pink blue nostalgia 1980s Japanese">🌸 Vaporwave</button>
-          <button class="style-btn" data-style="glitch art digital distortion VHS error RGB color split">📟 Glitch</button>
-          <button class="style-btn" data-style="psychedelic surreal trippy vivid kaleidoscope fractals">🌀 Psychédélique</button>
-          <button class="style-btn" data-style="Octane render 3D CGI photorealistic studio shot glossy">🖥️ 3D CGI</button>
-          <button class="style-btn" data-style="holographic iridescent chrome metallic rainbow surface">🌈 Holographique</button>
-          <button class="style-btn" data-style="anime style Studio Ghibli soft beautiful magical scenery">🌸 Anime Ghibli</button>
-          <button class="style-btn" data-style="dark moody anime aesthetic atmospheric glow violet blue">🌙 Dark Anime</button>
-          <button class="style-btn" data-style="minimalist clean modern typography flat geometric design">◻️ Minimal</button>
-          <button class="style-btn" data-style="pop art Andy Warhol style bold colors halftone print">🟡 Pop Art</button>
-          <button class="style-btn" data-style="glass crystal transparent material refraction caustics light">💎 Verre & Cristal</button>
-          <button class="style-btn" data-style="low poly geometric abstract colorful 3D faceted shapes">💠 Low Poly</button>
-          <button class="style-btn" data-style="African tribal art bold patterns vivid colors traditional">🌍 Art Tribal</button>
-          <button class="style-btn" data-style="stained glass cathedral colorful light medieval gothic church">🪟 Vitrail</button>
-          <button class="style-btn" data-style="horror supernatural dark atmospheric fog shadows">👻 Horror</button>
-          <button class="style-btn" data-style="steampunk Victorian brass mechanical gears, copper pipes">⚙️ Steampunk</button>
-          <button class="style-btn" data-style="pixel art retro video game 8-bit 16-bit style">👾 Pixel Art</button>
-          <button class="style-btn" data-style="neon light painting glowing light strokes long exposure">💡 Neon Light</button>
-          <button class="style-btn" data-style="graffiti street art urban mural bold spray paint tag">🎭 Street Art</button>
+          <!-- Styles are injected by JS for liked-style highlighting -->
         </div>
       </div>
     </div>
@@ -322,9 +398,29 @@
         </button>
       </div>
       <p class="dl-notice">
-        ⚠️ <strong>Important :</strong> Une pub sera affichée au 1er clic — c'est gratuit et nécessaire.<br>
-        Si tu vois la pub, fais <strong>retour</strong> puis appuie à nouveau sur <strong>Télécharger</strong>.
+        ✦ <strong>100% gratuit</strong> — Une publicité s'ouvrira dans un nouvel onglet lors du téléchargement. C'est ce qui nous permet de rester gratuits.
       </p>
+    </div>
+
+    <!-- FEEDBACK ZONE -->
+    <div class="feedback-zone" id="feedbackZone">
+      <div class="feedback-title">✦ Ce style te plaît ?</div>
+      <div class="feedback-sub">L'IA s'adapte à tes goûts pour les prochaines créations.</div>
+      <div class="feedback-btns">
+        <button class="fb-btn fb-btn-yes" onclick="giveFeedback('yes')">
+          <span class="fb-btn-emoji">❤️</span>
+          J'adore !
+        </button>
+        <button class="fb-btn fb-btn-little" onclick="giveFeedback('little')">
+          <span class="fb-btn-emoji">🤔</span>
+          Un peu…
+        </button>
+        <button class="fb-btn fb-btn-no" onclick="giveFeedback('no')">
+          <span class="fb-btn-emoji">💔</span>
+          Non
+        </button>
+      </div>
+      <div class="feedback-response" id="feedbackResponse"></div>
     </div>
   </div>
 </section>
@@ -342,8 +438,8 @@
   <div class="features-grid">
     <div class="feature-card"><div class="feature-icon">⚡</div><div class="feature-title">Ultra Rapide</div><div class="feature-desc">Génération en quelques secondes grâce au modèle FLUX, le plus puissant disponible.</div></div>
     <div class="feature-card"><div class="feature-icon">∞</div><div class="feature-title">Illimité & Gratuit</div><div class="feature-desc">Aucun compte requis, aucune limite. Génère autant de fonds d'écran que tu veux.</div></div>
-    <div class="feature-card"><div class="feature-icon">🎨</div><div class="feature-title">35+ Styles</div><div class="feature-desc">Cinématique, Cyberpunk, Baroque, Anime, Glitch, Dark Fantasy et bien plus encore.</div></div>
-    <div class="feature-card"><div class="feature-icon">✦</div><div class="feature-title">100% Unique</div><div class="feature-desc">Chaque génération est une création originale. Ton nom, ton style, ta vision.</div></div>
+    <div class="feature-card"><div class="feature-icon">🎨</div><div class="feature-title">60+ Styles</div><div class="feature-desc">Cinématique, Cyberpunk, Baroque, Anime, Glitch, Dark Fantasy et bien plus encore.</div></div>
+    <div class="feature-card"><div class="feature-icon">❤️</div><div class="feature-title">Apprend tes goûts</div><div class="feature-desc">L'IA mémorise tes styles favoris et améliore les suggestions à chaque génération.</div></div>
   </div>
 </section>
 
@@ -360,9 +456,266 @@
   document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY;cursor.style.transform=`translate(${mx-6}px,${my-6}px)`; });
   (function loop(){ rx+=(mx-rx-18)*.12;ry+=(my-ry-18)*.12;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop); })();
 
+  // ─── ALL STYLES DEFINITION ────────────────────────────
+  const ALL_STYLES = [
+    { emoji:'🚫', label:'Aucun style',      style:'' },
+    { emoji:'🎬', label:'Cinématique',       style:'cinematic photorealism, dramatic film lighting, movie poster' },
+    { emoji:'📷', label:'Hyper-Réaliste',   style:'hyper-realistic photography, studio lighting, 8K ultra detail' },
+    { emoji:'🌑', label:'Dark Fantasy',      style:'dark fantasy digital art, ominous shadows, gothic atmosphere' },
+    { emoji:'⚔️', label:'Epic Fantasy',     style:'epic high fantasy concept art, magical world, dragons' },
+    { emoji:'⚡', label:'Cyberpunk',         style:'neon cyberpunk futuristic city, rain reflections, neon signs' },
+    { emoji:'🚀', label:'Sci-Fi',            style:'sci-fi space opera, alien planet, futuristic spacecraft' },
+    { emoji:'✨', label:'Luxe Doré',         style:'luxury gold abstract art, pure black background, ornate golden details' },
+    { emoji:'🏛️', label:'Art Déco',         style:'art deco luxury gold geometric patterns 1920s gatsby vintage' },
+    { emoji:'🖼️', label:'Baroque',          style:'baroque ornate oil painting, gold leaf, rich dramatic colors' },
+    { emoji:'🌌', label:'Cosmique',          style:'cosmic nebula 3D render galaxy stars milky way deep space' },
+    { emoji:'🔭', label:'Deep Space',        style:'deep space astronomy NASA photograph aurora borealis' },
+    { emoji:'🌊', label:'Bioluminescent',    style:'bioluminescent ocean underwater glowing sea creatures' },
+    { emoji:'🎨', label:'Aquarelle',         style:'watercolor soft pastel dreamy aesthetic delicate brushstrokes' },
+    { emoji:'🖌️', label:'Impressionniste',  style:'oil painting impressionist Monet style visible brushstrokes' },
+    { emoji:'🗾', label:'Ukiyo-e',           style:'traditional Japanese ukiyo-e woodblock print Hokusai style' },
+    { emoji:'🌃', label:'Retrowave',         style:'retrowave synthwave purple pink sunset 80s retro neon grid' },
+    { emoji:'🌸', label:'Vaporwave',         style:'vaporwave aesthetic pastel pink blue nostalgia 1980s Japanese' },
+    { emoji:'📟', label:'Glitch',            style:'glitch art digital distortion VHS error RGB color split' },
+    { emoji:'🌀', label:'Psychédélique',     style:'psychedelic surreal trippy vivid kaleidoscope fractals' },
+    { emoji:'🖥️', label:'3D CGI',           style:'Octane render 3D CGI photorealistic studio shot glossy' },
+    { emoji:'🌈', label:'Holographique',     style:'holographic iridescent chrome metallic rainbow surface' },
+    { emoji:'🌸', label:'Anime Ghibli',      style:'anime style Studio Ghibli soft beautiful magical scenery' },
+    { emoji:'🌙', label:'Dark Anime',        style:'dark moody anime aesthetic atmospheric glow violet blue' },
+    { emoji:'◻️', label:'Minimal',           style:'minimalist clean modern typography flat geometric design' },
+    { emoji:'🟡', label:'Pop Art',           style:'pop art Andy Warhol style bold colors halftone print' },
+    { emoji:'💎', label:'Verre & Cristal',   style:'glass crystal transparent material refraction caustics light' },
+    { emoji:'💠', label:'Low Poly',          style:'low poly geometric abstract colorful 3D faceted shapes' },
+    { emoji:'🌍', label:'Art Tribal',        style:'African tribal art bold patterns vivid colors traditional' },
+    { emoji:'🪟', label:'Vitrail',           style:'stained glass cathedral colorful light medieval gothic church' },
+    { emoji:'👻', label:'Horror',            style:'horror supernatural dark atmospheric fog shadows' },
+    { emoji:'⚙️', label:'Steampunk',        style:'steampunk Victorian brass mechanical gears, copper pipes' },
+    { emoji:'👾', label:'Pixel Art',         style:'pixel art retro video game 8-bit 16-bit style' },
+    { emoji:'💡', label:'Neon Light',        style:'neon light painting glowing light strokes long exposure' },
+    { emoji:'🎭', label:'Street Art',        style:'graffiti street art urban mural bold spray paint tag' },
+    // ── NOUVEAUX STYLES ──
+    { emoji:'🪨', label:'Pierre & Roche',    style:'carved stone texture ancient rock engraving monumental sculpture dramatic lighting' },
+    { emoji:'🌿', label:'Nature Organique',  style:'organic nature lush green botanical jungle macro photography vivid colors' },
+    { emoji:'❄️', label:'Cristal de Glace',  style:'ice crystal frozen winter blue white frost macro photograph ethereal' },
+    { emoji:'🔥', label:'Inferno',           style:'blazing fire inferno molten lava volcanic explosion dramatic red orange' },
+    { emoji:'🌊', label:'Aquatique',         style:'deep ocean waves underwater blue turquoise coral reef fluid art' },
+    { emoji:'🏺', label:'Grec Antique',      style:'ancient Greek classical sculpture white marble Athens mythology epic' },
+    { emoji:'🌅', label:'Golden Hour',       style:'golden hour sunset sky warm orange pink cinematic landscape photography' },
+    { emoji:'🌑', label:'Éclipse Totale',    style:'total solar eclipse dramatic black sky corona ring of fire astral' },
+    { emoji:'🦋', label:'Papillon & Nature', style:'butterfly wings macro extreme close-up iridescent prismatic nature magical' },
+    { emoji:'🧬', label:'Bio-Organique',     style:'organic bio-mechanical fractal growth cellular micro biology abstract art' },
+    { emoji:'🃏', label:'Carte de Tarot',    style:'tarot card mystical ornate vintage esoteric art nouveau occult illustration' },
+    { emoji:'🌙', label:'Mythologie',        style:'Greek mythology gods Olympus divine celestial epic painting golden age' },
+    { emoji:'🏯', label:'Japonais',          style:'Japanese traditional ink brush sumi-e bamboo cherry blossom zen minimalism' },
+    { emoji:'🦁', label:'Sauvage',           style:'wild animal safari lion tiger powerful majestic wildlife photography dramatic' },
+    { emoji:'🪐', label:'Planète Alien',     style:'alien world exoplanet terraformed rings moons surreal sci-fi landscape' },
+    { emoji:'🏙️', label:'Mégapole Nuit',    style:'night city skyline skyscrapers lights reflections metropolis aerial view' },
+    { emoji:'🎪', label:'Cirque Fantôme',    style:'dark circus phantom surreal gothic tent carnival nightmare dreamlike' },
+    { emoji:'💀', label:'Memento Mori',      style:'skull dark baroque vanitas death memento mori dramatic chiaroscuro' },
+    { emoji:'🌺', label:'Floral Luxe',       style:'luxury floral botanical gold rose peony orchid macro delicate opulent' },
+    { emoji:'🌐', label:'Matrix Digital',    style:'matrix digital rain green code data stream cyber cyberspace' },
+    { emoji:'🪬', label:'Spirituel',         style:'spiritual cosmic sacred geometry mandala divine light mystical aura glowing' },
+    { emoji:'🎻', label:'Art Nouveau',       style:'art nouveau Mucha style organic flowing botanical ornamental poster illustration' },
+    { emoji:'🧊', label:'Néon Glacé',        style:'ice neon cool blue turquoise frozen metallic chrome winter futurism' },
+    { emoji:'🌋', label:'Volcanique',        style:'volcanic eruption magma lava flow geological formation fire earth power' },
+    { emoji:'🤖', label:'Mecha Robot',       style:'giant mecha robot anime mechanical armor detailed sci-fi futuristic design' },
+    { emoji:'🎆', label:'Feux d\'Artifice',  style:'fireworks explosion colorful light trails sparkles celebration night sky' },
+    { emoji:'🧿', label:'Cosmique Spirituel',style:'evil eye talisman spiritual amulet turquoise gold ornate protective magic' },
+  ];
+
+  // ─── LIKED STYLES SYSTEM ──────────────────────────────
+  let likedStyles   = JSON.parse(localStorage.getItem('evannsLikedStyles')  || '[]');
+  // likedStyles: array of style strings
+
+  function saveLikedStyles() {
+    localStorage.setItem('evannsLikedStyles', JSON.stringify(likedStyles));
+  }
+
+  function addLikedStyle(styleStr) {
+    if (styleStr && !likedStyles.includes(styleStr)) {
+      likedStyles.unshift(styleStr);
+      if (likedStyles.length > 12) likedStyles = likedStyles.slice(0, 12);
+      saveLikedStyles();
+      renderLikedBanner();
+      renderStyleGrid();
+    }
+  }
+
+  function removeLikedStyle(styleStr) {
+    likedStyles = likedStyles.filter(s => s !== styleStr);
+    saveLikedStyles();
+    renderLikedBanner();
+    renderStyleGrid();
+  }
+
+  function renderLikedBanner() {
+    const banner = document.getElementById('likedStylesBanner');
+    const row    = document.getElementById('likedStylesRow');
+    if (!likedStyles.length) { banner.classList.remove('visible'); return; }
+    banner.classList.add('visible');
+    row.innerHTML = likedStyles.map(s => {
+      const found = ALL_STYLES.find(x => x.style === s);
+      const label = found ? `${found.emoji} ${found.label}` : s.slice(0,20) + '…';
+      return `<span class="liked-tag" onclick="applyLikedStyle('${s.replace(/'/g,"\\'")}')">
+        ${label}
+        <span class="liked-tag-remove" onclick="event.stopPropagation();removeLikedStyle('${s.replace(/'/g,"\\'")}')">✕</span>
+      </span>`;
+    }).join('');
+  }
+
+  function applyLikedStyle(styleStr) {
+    selectedStyle = styleStr;
+    document.querySelectorAll('.style-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.style === styleStr);
+    });
+    showToast('✦ Style favori appliqué !');
+  }
+
+  // ─── STYLE GRID RENDER ────────────────────────────────
+  let selectedStyle = 'cinematic photorealism, dramatic film lighting, movie poster';
+
+  function renderStyleGrid() {
+    const grid = document.getElementById('styleGrid');
+    // Sort: liked first, then rest
+    const likedSet = new Set(likedStyles);
+    const sorted = [
+      ...ALL_STYLES.filter(s => s.style && likedSet.has(s.style)),
+      ...ALL_STYLES.filter(s => !s.style || !likedSet.has(s.style))
+    ];
+    grid.innerHTML = sorted.map(s => {
+      const isLiked  = s.style && likedSet.has(s.style);
+      const isActive = s.style === selectedStyle;
+      return `<button class="style-btn${isActive?' active':''}${isLiked?' liked':''}"
+        data-style="${s.style}"
+        title="${s.label}">
+        ${s.emoji} ${s.label}
+      </button>`;
+    }).join('');
+
+    grid.querySelectorAll('.style-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        grid.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedStyle = btn.dataset.style;
+      });
+    });
+  }
+
+  renderStyleGrid();
+  renderLikedBanner();
+
+  // ─── IMAGE REFERENCE UPLOAD ───────────────────────────
+  let refImageBase64  = null;   // full data URL
+  let refImageData    = null;   // base64 only (no prefix)
+  let refImageMime    = null;   // e.g. "image/jpeg"
+  let refImagePrompt  = null;   // Claude's analysis result (cached)
+  let refAnalyzing    = false;
+
+  const uploadZone = document.getElementById('uploadZone');
+  const refInput   = document.getElementById('refImageInput');
+
+  refInput.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) handleRefFile(file);
+  });
+
+  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+  uploadZone.addEventListener('drop', e => {
+    e.preventDefault();
+    uploadZone.classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) handleRefFile(file);
+  });
+
+  function handleRefFile(file) {
+    if (file.size > 10 * 1024 * 1024) { showToast('⚠️ Image trop lourde (max 10 Mo)'); return; }
+    const reader = new FileReader();
+    reader.onload = ev => {
+      refImageBase64 = ev.target.result;           // data:image/jpeg;base64,....
+      refImageMime   = file.type || 'image/jpeg';
+      refImageData   = refImageBase64.split(',')[1]; // base64 only
+      refImagePrompt = null; // reset cache
+
+      document.getElementById('uploadPreview').src = refImageBase64;
+      document.getElementById('uploadPreviewWrap').classList.add('visible');
+      document.getElementById('uploadZone').style.display = 'none';
+
+      // Start Claude analysis immediately in background
+      analyzeRefImageWithClaude();
+      showToast('✦ Image chargée — analyse en cours…');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function removeRefImage() {
+    refImageBase64 = null;
+    refImageData   = null;
+    refImageMime   = null;
+    refImagePrompt = null;
+    refAnalyzing   = false;
+    refInput.value = '';
+    document.getElementById('uploadPreview').src = '';
+    document.getElementById('uploadPreviewWrap').classList.remove('visible');
+    document.getElementById('uploadZone').style.display = 'block';
+    const lbl = document.getElementById('uploadStatusLabel');
+    if (lbl) lbl.textContent = '✦ Analyse Claude en cours…';
+    showToast('Image de référence retirée');
+  }
+
+  // ── Claude analyses the reference image and returns an art-prompt description ──
+  async function analyzeRefImageWithClaude() {
+    if (!refImageData || refAnalyzing) return;
+    refAnalyzing = true;
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 300,
+          messages: [{
+            role: 'user',
+            content: [
+              {
+                type: 'image',
+                source: {
+                  type: 'base64',
+                  media_type: refImageMime,
+                  data: refImageData
+                }
+              },
+              {
+                type: 'text',
+                text: `Analyze this image and extract its visual style for use as an AI image generation prompt.
+Describe ONLY: dominant colors, lighting style, mood/atmosphere, artistic technique, textures, and overall aesthetic.
+Be specific and concise. Output a single comma-separated list of descriptive terms (no sentences, no explanation).
+Example output: "deep cobalt blue and gold tones, dramatic chiaroscuro lighting, baroque oil painting style, rich ornate textures, luxurious and mysterious atmosphere"
+Now describe this image:`
+              }
+            ]
+          }]
+        })
+      });
+      const data = await response.json();
+      if (data.content && data.content[0] && data.content[0].text) {
+        refImagePrompt = data.content[0].text.trim();
+        const lbl = document.getElementById('uploadStatusLabel');
+        if (lbl) lbl.textContent = '✦ Style extrait par Claude ✓';
+        showToast('✦ Image analysée par l\'IA — style extrait !');
+      }
+    } catch (err) {
+      console.error('Claude image analysis failed:', err);
+      refImagePrompt = 'inspired by the reference image aesthetic, color palette, and mood';
+      const lbl = document.getElementById('uploadStatusLabel');
+      if (lbl) lbl.textContent = '⚠️ Analyse partielle — image prise en compte';
+    } finally {
+      refAnalyzing = false;
+    }
+  }
+
   // ─── COUNTER ──────────────────────────────────────────
   let totalGenerated = parseInt(localStorage.getItem('evannsTotalGen') || '0');
-  // Simule un compteur global réaliste
   const BASE_COUNT = 12847;
   function updateCounter() {
     const display = BASE_COUNT + totalGenerated;
@@ -377,16 +730,6 @@
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), duration);
   }
-
-  // ─── STYLE SELECT ─────────────────────────────────────
-  let selectedStyle = 'cinematic photorealism, dramatic film lighting, movie poster';
-  document.querySelectorAll('.style-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedStyle = btn.dataset.style;
-    });
-  });
 
   // ─── RESOLUTION SELECT ────────────────────────────────
   let resW=1920, resH=1080;
@@ -410,20 +753,29 @@
     'ville futuriste sous la pluie néon',
     'volcans et lave incandescente'
   ];
-  const styleButtons = document.querySelectorAll('.style-btn');
 
   function surpriseMe() {
     const name = surpriseNames[Math.floor(Math.random() * surpriseNames.length)];
     const desc = surpriseDescs[Math.floor(Math.random() * surpriseDescs.length)];
-    const randomStyle = Math.floor(Math.random() * styleButtons.length);
+
+    // Prefer a liked style, else random
+    let picked;
+    if (likedStyles.length) {
+      const randLiked = likedStyles[Math.floor(Math.random() * likedStyles.length)];
+      picked = ALL_STYLES.find(s => s.style === randLiked) || ALL_STYLES[Math.floor(Math.random() * ALL_STYLES.length)];
+    } else {
+      picked = ALL_STYLES[Math.floor(Math.random() * ALL_STYLES.length)];
+    }
 
     document.getElementById('nameInput').value = name;
     document.getElementById('descInput').value = desc;
 
-    styleButtons.forEach(b => b.classList.remove('active'));
-    styleButtons[randomStyle].classList.add('active');
-    selectedStyle = styleButtons[randomStyle].dataset.style;
-    styleButtons[randomStyle].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    selectedStyle = picked.style;
+    renderStyleGrid();
+
+    // Scroll chosen style into view
+    const btns = document.querySelectorAll('.style-btn');
+    btns.forEach(b => { if (b.dataset.style === picked.style) b.scrollIntoView({ behavior:'smooth', block:'nearest' }); });
 
     showToast('✦ Configuration surprise appliquée !');
   }
@@ -431,8 +783,8 @@
   // ─── GALLERY ──────────────────────────────────────────
   let gallery = JSON.parse(localStorage.getItem('evannsGallery') || '[]');
 
-  function addToGallery(imageUrl, name) {
-    gallery.unshift({ imageUrl, name, date: Date.now() });
+  function addToGallery(imageUrl, name, feedback) {
+    gallery.unshift({ imageUrl, name, feedback, date: Date.now() });
     if (gallery.length > 6) gallery = gallery.slice(0, 6);
     localStorage.setItem('evannsGallery', JSON.stringify(gallery));
     renderGallery();
@@ -444,12 +796,15 @@
       grid.innerHTML = '<p class="gallery-empty">Tes créations apparaîtront ici...</p>';
       return;
     }
-    grid.innerHTML = gallery.map(item => `
+    grid.innerHTML = gallery.map(item => {
+      const heart = item.feedback === 'yes' ? '❤️' : item.feedback === 'little' ? '🤔' : item.feedback === 'no' ? '💔' : '';
+      return `
       <div class="gallery-item" onclick="reuseFromGallery('${item.imageUrl}', '${item.name}')">
         <img src="${item.imageUrl}" alt="${item.name}" loading="lazy" />
         <div class="gallery-item-name">${item.name}</div>
-      </div>
-    `).join('');
+        ${heart ? `<div class="gallery-item-heart">${heart}</div>` : ''}
+      </div>`;
+    }).join('');
   }
 
   function reuseFromGallery(imageUrl, name) {
@@ -463,11 +818,11 @@
   // ─── SHARE ────────────────────────────────────────────
   let currentImageUrl = '';
   let currentName = '';
+  let currentStyleForFeedback = '';
 
   function shareImage() {
     const shareUrl = window.location.href;
     const shareText = `✦ J'ai transformé mon nom "${currentName}" en œuvre d'art avec l'IA ! Crée le tien gratuitement →`;
-
     if (navigator.share) {
       navigator.share({ title: 'Evanns Name', text: shareText, url: shareUrl });
     } else {
@@ -477,32 +832,50 @@
     }
   }
 
-  // ─── RESTAURATION APRÈS PUB ───────────────────────────
-  (function restoreAfterAd() {
-    const saved = sessionStorage.getItem('evannsDL');
-    if (!saved) return;
-    const { imageUrl, name, adDone } = JSON.parse(saved);
-    if (!adDone) return;
-    currentImageUrl = imageUrl;
-    currentName = name;
-    const area = document.getElementById('resultArea');
-    const img  = document.getElementById('resultImg');
-    const wrap = document.getElementById('imgWrap');
-    const dlWrap = document.getElementById('downloadWrap');
-    const dlBtn = document.getElementById('downloadBtn');
-    document.getElementById('loadingState').classList.remove('active');
-    img.onload = () => {
-      img.classList.add('loaded');
-      wrap.style.display = 'block';
-      dlWrap.style.display = 'flex';
-      area.classList.add('visible');
-      setTimeout(() => area.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
-      attachDownload(dlBtn, imageUrl, name);
-      sessionStorage.removeItem('evannsDL');
-    };
-    img.src = imageUrl;
-    area.classList.add('visible');
-  })();
+  // ─── FEEDBACK SYSTEM ─────────────────────────────────
+  function showFeedback() {
+    const zone = document.getElementById('feedbackZone');
+    zone.classList.add('visible');
+    // Reset buttons & response
+    zone.querySelectorAll('.fb-btn').forEach(b => b.disabled = false);
+    const resp = document.getElementById('feedbackResponse');
+    resp.classList.remove('visible','green','orange','red');
+    resp.textContent = '';
+  }
+
+  function giveFeedback(type) {
+    const zone = document.getElementById('feedbackZone');
+    const resp = document.getElementById('feedbackResponse');
+    const styleName = ALL_STYLES.find(s => s.style === currentStyleForFeedback);
+    const label = styleName ? `${styleName.emoji} ${styleName.label}` : 'ce style';
+
+    // Disable buttons after choice
+    zone.querySelectorAll('.fb-btn').forEach(b => b.disabled = true);
+
+    if (type === 'yes') {
+      addLikedStyle(currentStyleForFeedback);
+      resp.className = 'feedback-response green visible';
+      resp.innerHTML = `<strong>❤️ Style mémorisé !</strong><br>
+        L'IA retient <em>${label}</em> comme l'un de tes favoris. Il sera mis en avant pour tes prochaines créations.`;
+    } else if (type === 'little') {
+      resp.className = 'feedback-response orange visible';
+      resp.innerHTML = `<strong>🤔 Noté !</strong><br>
+        L'IA peut s'améliorer avec ce style. Essaie d'ajouter une description plus précise, ou explore un style similaire — tu peux aussi uploader une image de référence pour mieux guider le résultat.`;
+    } else {
+      resp.className = 'feedback-response red visible';
+      resp.innerHTML = `<strong>💔 OK, on passe !</strong><br>
+        Ce style ne sera pas mémorisé. Essaie un autre style ou décris ta vision différemment. Tes styles favoris guident toujours l'IA en premier.`;
+    }
+
+    // Update gallery last item feedback
+    if (gallery.length) {
+      gallery[0].feedback = type;
+      localStorage.setItem('evannsGallery', JSON.stringify(gallery));
+      renderGallery();
+    }
+  }
+
+  // Restauration après pub : supprimée (téléchargement direct)
 
   // ─── SEO : titre dynamique ────────────────────────────
   document.getElementById('nameInput').addEventListener('input', e => {
@@ -513,7 +886,7 @@
   });
 
   // ─── GENERATE ─────────────────────────────────────────
-  async function generateImage() {
+  async function generateImage() { // already async
     const name   = document.getElementById('nameInput').value.trim();
     const desc   = document.getElementById('descInput').value.trim();
     const genBtn = document.getElementById('generateBtn');
@@ -527,18 +900,49 @@
       return;
     }
 
+    // If user uploaded a ref image but analysis is still running, wait for it
+    if (refImageData && !refImagePrompt && refAnalyzing) {
+      genBtn.disabled = true;
+      genBtn.textContent = '⏳   Analyse de l\'image…';
+      showToast('⏳ L\'IA analyse ton image de référence, patiente…');
+      await new Promise(resolve => {
+        const check = setInterval(() => {
+          if (!refAnalyzing) { clearInterval(check); resolve(); }
+        }, 400);
+        setTimeout(() => { clearInterval(check); resolve(); }, 12000);
+      });
+    }
+
+    // If analysis wasn't triggered yet, try now
+    if (refImageData && !refImagePrompt) {
+      await analyzeRefImageWithClaude();
+    }
+
     let prompt = `A stunning premium wallpaper featuring the name "${name}" as the central typographic masterpiece, bold large decorative letters dominating the composition`;
-    if (selectedStyle) prompt += `, ${selectedStyle}`;
-    if (desc) prompt += `, ${desc}`;
+    if (selectedStyle)  prompt += `, ${selectedStyle}`;
+    if (desc)           prompt += `, ${desc}`;
+    if (refImagePrompt) prompt += `, ${refImagePrompt}`;
     prompt += ', ultra detailed, 8K resolution, professional concept art, masterful composition, award-winning digital artwork';
+
+    // Add liked styles as soft influence
+    if (likedStyles.length && !likedStyles.includes(selectedStyle)) {
+      const extraStyle = ALL_STYLES.find(s => likedStyles.includes(s.style));
+      if (extraStyle) prompt += `, subtle hints of ${extraStyle.style}`;
+    }
+
+    currentStyleForFeedback = selectedStyle;
 
     genBtn.disabled = true;
     genBtn.textContent = '✦   Création en cours…';
     showLoading();
     sessionStorage.removeItem('evannsDL');
 
+    // Hide feedback zone
+    document.getElementById('feedbackZone').classList.remove('visible');
+    document.getElementById('feedbackResponse').classList.remove('visible');
+
     const seed = Math.floor(Math.random() * 9999999);
-    const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${resW}&height=${resH}&seed=${seed}&model=flux&enhance=true&nologo=true`;
+    const url  = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${resW}&height=${resH}&seed=${seed}&model=flux&enhance=true&nologo=true`;
 
     currentImageUrl = url;
     currentName = name;
@@ -560,18 +964,17 @@
   function hideLoading() { document.getElementById('loadingState').classList.remove('active'); }
 
   function attachDownload(dlBtn, imageUrl, name) {
-    dlBtn.onclick = async (e) => {
+    dlBtn.onclick = (e) => {
       e.preventDefault();
-      try {
-        const res = await fetch(imageUrl);
-        const blob = await res.blob();
-        const bUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = bUrl;
-        a.download = `evanns-name-${name.toLowerCase().replace(/\s+/g, '-')}.png`;
-        a.click();
-        URL.revokeObjectURL(bUrl);
-      } catch { window.open(imageUrl, '_blank'); }
+      // 1. Pub dans nouvel onglet — immédiatement dans le onclick (jamais bloqué)
+      window.open('https://omg10.com/4/10921151', '_blank');
+      // 2. Téléchargement direct via <a> — pas besoin de fetch, pas de délai
+      const a = document.createElement('a');
+      a.href = imageUrl;
+      a.download = `evanns-name-${name.toLowerCase().replace(/\s+/g,'-')}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     };
   }
 
@@ -589,20 +992,25 @@
       setTimeout(() => img.classList.add('loaded'), 50);
       dlWrap.style.display = 'flex';
 
-      // Compteur
       totalGenerated++;
       localStorage.setItem('evannsTotalGen', totalGenerated);
       updateCounter();
 
-      // Galerie
-      addToGallery(imageUrl, name);
+      addToGallery(imageUrl, name, null);
 
-      // Téléchargement avec smartlink
-      dlBtn.onclick = async (e) => {
+      dlBtn.onclick = (e) => {
         e.preventDefault();
-        sessionStorage.setItem('evannsDL', JSON.stringify({ imageUrl, name, adDone: true }));
-        window.location.href = 'https://omg10.com/4/10921151';
+        window.open('https://omg10.com/4/10921151', '_blank');
+        const a = document.createElement('a');
+        a.href = imageUrl;
+        a.download = `evanns-name-${name.toLowerCase().replace(/\s+/g,'-')}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       };
+
+      // Show feedback after a short delay
+      setTimeout(() => showFeedback(), 800);
     };
 
     img.onerror = () => {
@@ -611,6 +1019,7 @@
       hideLoading();
       wrap.style.display = 'block';
       dlWrap.style.display = 'flex';
+      setTimeout(() => showFeedback(), 800);
     };
 
     img.src = imageUrl;
