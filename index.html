@@ -46,6 +46,89 @@
     .nav-logo span { color:var(--white); }
     .nav-tag { font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);opacity:.7; }
 
+    /* ── GLOBAL COUNTER WIDGET ── */
+    .global-counter-widget {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      background: rgba(13,13,16,0.92);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 16px;
+      padding: 14px 20px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.06), inset 0 1px 0 rgba(255,255,255,0.04);
+      min-width: 200px;
+      animation: fadeUp .8s 1.5s both;
+      cursor: default;
+    }
+    .gcw-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .gcw-live-dot {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: livePulse 1.8s ease-in-out infinite;
+      box-shadow: 0 0 8px rgba(76,175,116,0.7);
+    }
+    @keyframes livePulse {
+      0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 8px rgba(76,175,116,0.7); }
+      50% { opacity:.4; transform:scale(.65); box-shadow:0 0 4px rgba(76,175,116,0.3); }
+    }
+    .gcw-label {
+      font-size: .58rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--silver);
+      opacity: .65;
+    }
+    .gcw-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      line-height: 1;
+      letter-spacing: .04em;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: shimmerNum 4s ease-in-out infinite;
+    }
+    @keyframes shimmerNum {
+      0%,100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .gcw-sub {
+      font-size: .62rem;
+      color: var(--silver);
+      opacity: .45;
+      margin-top: 3px;
+      letter-spacing: .06em;
+    }
+    .gcw-date {
+      font-size: .58rem;
+      color: var(--gold);
+      opacity: .5;
+      margin-top: 6px;
+      letter-spacing: .1em;
+      padding-top: 6px;
+      border-top: 1px solid rgba(201,168,76,.12);
+    }
+    /* Animate number on update */
+    .gcw-number.bump {
+      animation: numBump .4s ease, shimmerNum 4s ease-in-out infinite;
+    }
+    @keyframes numBump {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.14); }
+      100% { transform: scale(1); }
+    }
+
     .counter-badge {
       display:inline-flex;align-items:center;gap:8px;
       background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);
@@ -87,7 +170,6 @@
     .field-input:focus,.field-textarea:focus { border-color:rgba(201,168,76,.5);background:rgba(201,168,76,.04);box-shadow:0 0 0 3px rgba(201,168,76,.08),0 0 20px rgba(201,168,76,.06); }
     .field-textarea { resize:vertical;min-height:100px;line-height:1.6; }
 
-    /* Surprise button */
     .btn-surprise {
       display:inline-flex;align-items:center;gap:8px;
       background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);
@@ -97,7 +179,6 @@
     }
     .btn-surprise:hover { background:rgba(201,168,76,0.15);box-shadow:0 0 20px rgba(201,168,76,.15); }
 
-    /* ── LIKED STYLES BANNER ── */
     .liked-styles-banner {
       display:none;
       width:100%;max-width:820px;
@@ -135,7 +216,6 @@
     .res-btn:hover { border-color:rgba(201,168,76,.3);color:var(--white); }
     .res-btn.active { background:rgba(201,168,76,.12);border-color:var(--gold);color:var(--gold); }
 
-    /* ── IMAGE REFERENCE UPLOAD ── */
     .upload-zone {
       width:100%;border:2px dashed var(--border);border-radius:var(--radius);
       padding:32px 20px;text-align:center;cursor:none;transition:all .3s;
@@ -180,7 +260,6 @@
     .error-msg { display:none;background:rgba(200,50,50,.08);border:1px solid rgba(200,50,50,.25);border-radius:12px;padding:18px 24px;color:#e07070;font-size:.88rem;text-align:center;width:100%;max-width:820px;margin-top:20px; }
     .error-msg.show { display:block; }
 
-    /* ── COUNTDOWN OVERLAY (point 3) ── */
     .countdown-overlay {
       display:none;position:fixed;inset:0;z-index:500;
       background:rgba(5,5,7,0.92);backdrop-filter:blur(8px);
@@ -193,7 +272,6 @@
     .countdown-bar { height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;width:100%;transform-origin:left;transition:transform 1s linear; }
     .countdown-sub { font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--silver);opacity:.5; }
 
-    /* ── REGEN SMARTLINK BTN (point 2) ── */
     .btn-regen-smart { padding:14px 28px;background:transparent;border:1px solid rgba(201,168,76,0.35);border-radius:var(--radius);color:var(--gold);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.2em;cursor:none;transition:all .3s;display:flex;align-items:center;gap:10px; }
     .btn-regen-smart:hover { background:rgba(201,168,76,.08);transform:translateY(-2px); }
 
@@ -209,7 +287,6 @@
     .dl-notice { font-size:.75rem;color:var(--silver);text-align:center;max-width:440px;line-height:1.65;padding:10px 16px;border:1px solid rgba(201,168,76,.18);border-radius:10px;background:rgba(201,168,76,.04); }
     .dl-notice strong { color:var(--gold); }
 
-    /* ── FEEDBACK ZONE ── */
     .feedback-zone {
       display:none;
       width:100%;margin-top:28px;
@@ -252,7 +329,6 @@
     .feedback-response.orange strong { color:var(--orange); }
     .feedback-response.red strong { color:var(--red); }
 
-    /* ── GALLERY ── */
     .section-gallery { position:relative;z-index:2;padding:40px 24px 80px;display:flex;flex-direction:column;align-items:center; }
     .gallery-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;width:100%;max-width:900px;margin-top:32px; }
     .gallery-item { position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/9;cursor:none;transition:transform .3s,border-color .3s;background:var(--panel); }
@@ -288,10 +364,23 @@
       .upload-zone input[type=file]{cursor:pointer}
       .style-btn{cursor:pointer}
       .btn-surprise,.btn-generate,.res-btn,.fb-btn,.btn-download,.btn-share{cursor:pointer}
+      .global-counter-widget { bottom:16px;right:16px;padding:10px 14px;min-width:160px; }
+      .gcw-number { font-size:1.5rem; }
     }
   </style>
 </head>
 <body>
+
+<!-- GLOBAL COUNTER WIDGET -->
+<div class="global-counter-widget" id="globalCounterWidget">
+  <div class="gcw-header">
+    <div class="gcw-live-dot"></div>
+    <span class="gcw-label">Images générées</span>
+  </div>
+  <div class="gcw-number" id="gcwNumber">—</div>
+  <div class="gcw-sub">par tous les visiteurs</div>
+  <div class="gcw-date" id="gcwDate">Aujourd'hui</div>
+</div>
 
 <!-- COUNTDOWN OVERLAY -->
 <div class="countdown-overlay" id="countdownOverlay">
@@ -328,7 +417,6 @@
 <section class="section-gen">
   <div class="section-label">Générateur</div>
 
-  <!-- Liked styles banner -->
   <div class="liked-styles-banner" id="likedStylesBanner">
     <div class="liked-banner-label">♥ Tes styles favoris</div>
     <div class="liked-styles-row" id="likedStylesRow"></div>
@@ -347,7 +435,6 @@
       <textarea id="descInput" class="field-textarea" placeholder="Ex : Nuit dorée, galaxie violette, lettres en flammes bleues…"></textarea>
     </div>
 
-    <!-- IMAGE REFERENCE UPLOAD -->
     <div class="field-group">
       <label class="field-label">✦ Image de référence <span class="field-hint">(optionnel — montre ton style)</span></label>
       <div class="upload-zone" id="uploadZone">
@@ -370,9 +457,7 @@
     <div class="field-group">
       <label class="field-label">✦ Style artistique <span class="field-hint">— 60+ styles, scroll pour tout voir</span></label>
       <div class="style-scroll-wrap">
-        <div class="style-grid" id="styleGrid">
-          <!-- Styles are injected by JS for liked-style highlighting -->
-        </div>
+        <div class="style-grid" id="styleGrid"></div>
       </div>
     </div>
 
@@ -430,7 +515,6 @@
       </p>
     </div>
 
-    <!-- FEEDBACK ZONE -->
     <div class="feedback-zone" id="feedbackZone">
       <div class="feedback-title">✦ Ce style te plaît ?</div>
       <div class="feedback-sub">L'IA s'adapte à tes goûts pour les prochaines créations.</div>
@@ -453,7 +537,6 @@
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="section-gallery" id="gallerySection">
   <div class="section-label">Créations récentes</div>
   <div class="gallery-grid" id="galleryGrid">
@@ -483,6 +566,75 @@
   let mx=0,my=0,rx=0,ry=0;
   document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY;cursor.style.transform=`translate(${mx-6}px,${my-6}px)`; });
   (function loop(){ rx+=(mx-rx-18)*.12;ry+=(my-ry-18)*.12;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop); })();
+
+  // ═══════════════════════════════════════════════════════
+  //  GLOBAL COUNTER — shared storage (visible par tous)
+  // ═══════════════════════════════════════════════════════
+
+  // Clé du jour courant (format ISO YYYY-MM-DD)
+  function todayKey() {
+    return 'globalCount:' + new Date().toISOString().slice(0, 10);
+  }
+
+  // Formatage avec séparateur milliers
+  function fmtNum(n) {
+    return Number(n).toLocaleString('fr-FR');
+  }
+
+  // Anime le nombre dans le widget (bump visuel)
+  function setGcwNumber(n) {
+    const el = document.getElementById('gcwNumber');
+    el.textContent = fmtNum(n);
+    el.classList.remove('bump');
+    void el.offsetWidth; // reflow pour re-trigger l'animation
+    el.classList.add('bump');
+    setTimeout(() => el.classList.remove('bump'), 500);
+  }
+
+  // Affiche la date dans le widget
+  function setGcwDate() {
+    const el = document.getElementById('gcwDate');
+    const now = new Date();
+    const opts = { weekday: 'long', day: 'numeric', month: 'long' };
+    el.textContent = '📅 ' + now.toLocaleDateString('fr-FR', opts);
+  }
+
+  // Charge le compteur depuis le shared storage
+  async function loadGlobalCounter() {
+    const key = todayKey();
+    try {
+      const res = await window.storage.get(key, true); // shared = true
+      const count = res ? parseInt(res.value, 10) || 0 : 0;
+      setGcwNumber(count);
+    } catch {
+      // Clé absente → première visite du jour
+      setGcwNumber(0);
+    }
+    setGcwDate();
+  }
+
+  // Incrémente le compteur global du jour
+  async function incrementGlobalCounter() {
+    const key = todayKey();
+    let current = 0;
+    try {
+      const res = await window.storage.get(key, true);
+      current = res ? parseInt(res.value, 10) || 0 : 0;
+    } catch { /* première fois */ }
+    const next = current + 1;
+    try {
+      await window.storage.set(key, String(next), true); // shared = true
+      setGcwNumber(next);
+    } catch (err) {
+      console.error('Storage increment failed:', err);
+    }
+  }
+
+  // Initialisation au chargement
+  loadGlobalCounter();
+
+  // Rafraîchit toutes les 30 secondes (voit les générations des autres en live)
+  setInterval(loadGlobalCounter, 30_000);
 
   // ─── ALL STYLES DEFINITION ────────────────────────────
   const ALL_STYLES = [
@@ -521,7 +673,6 @@
     { emoji:'👾', label:'Pixel Art',         style:'pixel art retro video game 8-bit 16-bit style' },
     { emoji:'💡', label:'Neon Light',        style:'neon light painting glowing light strokes long exposure' },
     { emoji:'🎭', label:'Street Art',        style:'graffiti street art urban mural bold spray paint tag' },
-    // ── NOUVEAUX STYLES ──
     { emoji:'🪨', label:'Pierre & Roche',    style:'carved stone texture ancient rock engraving monumental sculpture dramatic lighting' },
     { emoji:'🌿', label:'Nature Organique',  style:'organic nature lush green botanical jungle macro photography vivid colors' },
     { emoji:'❄️', label:'Cristal de Glace',  style:'ice crystal frozen winter blue white frost macro photograph ethereal' },
@@ -552,8 +703,7 @@
   ];
 
   // ─── LIKED STYLES SYSTEM ──────────────────────────────
-  let likedStyles   = JSON.parse(localStorage.getItem('evannsLikedStyles')  || '[]');
-  // likedStyles: array of style strings
+  let likedStyles = JSON.parse(localStorage.getItem('evannsLikedStyles') || '[]');
 
   function saveLikedStyles() {
     localStorage.setItem('evannsLikedStyles', JSON.stringify(likedStyles));
@@ -604,7 +754,6 @@
 
   function renderStyleGrid() {
     const grid = document.getElementById('styleGrid');
-    // Sort: liked first, then rest
     const likedSet = new Set(likedStyles);
     const sorted = [
       ...ALL_STYLES.filter(s => s.style && likedSet.has(s.style)),
@@ -633,11 +782,11 @@
   renderLikedBanner();
 
   // ─── IMAGE REFERENCE UPLOAD ───────────────────────────
-  let refImageBase64  = null;   // full data URL
-  let refImageData    = null;   // base64 only (no prefix)
-  let refImageMime    = null;   // e.g. "image/jpeg"
-  let refImagePrompt  = null;   // Claude's analysis result (cached)
-  let refAnalyzing    = false;
+  let refImageBase64 = null;
+  let refImageData   = null;
+  let refImageMime   = null;
+  let refImagePrompt = null;
+  let refAnalyzing   = false;
 
   const uploadZone = document.getElementById('uploadZone');
   const refInput   = document.getElementById('refImageInput');
@@ -660,16 +809,15 @@
     if (file.size > 10 * 1024 * 1024) { showToast('⚠️ Image trop lourde (max 10 Mo)'); return; }
     const reader = new FileReader();
     reader.onload = ev => {
-      refImageBase64 = ev.target.result;           // data:image/jpeg;base64,....
+      refImageBase64 = ev.target.result;
       refImageMime   = file.type || 'image/jpeg';
-      refImageData   = refImageBase64.split(',')[1]; // base64 only
-      refImagePrompt = null; // reset cache
+      refImageData   = refImageBase64.split(',')[1];
+      refImagePrompt = null;
 
       document.getElementById('uploadPreview').src = refImageBase64;
       document.getElementById('uploadPreviewWrap').classList.add('visible');
       document.getElementById('uploadZone').style.display = 'none';
 
-      // Start Claude analysis immediately in background
       analyzeRefImageWithClaude();
       showToast('✦ Image chargée — analyse en cours…');
     };
@@ -691,7 +839,6 @@
     showToast('Image de référence retirée');
   }
 
-  // ── Claude analyses the reference image and returns an art-prompt description ──
   async function analyzeRefImageWithClaude() {
     if (!refImageData || refAnalyzing) return;
     refAnalyzing = true;
@@ -705,22 +852,12 @@
           messages: [{
             role: 'user',
             content: [
-              {
-                type: 'image',
-                source: {
-                  type: 'base64',
-                  media_type: refImageMime,
-                  data: refImageData
-                }
-              },
-              {
-                type: 'text',
-                text: `Analyze this image and extract its visual style for use as an AI image generation prompt.
+              { type: 'image', source: { type: 'base64', media_type: refImageMime, data: refImageData } },
+              { type: 'text', text: `Analyze this image and extract its visual style for use as an AI image generation prompt.
 Describe ONLY: dominant colors, lighting style, mood/atmosphere, artistic technique, textures, and overall aesthetic.
 Be specific and concise. Output a single comma-separated list of descriptive terms (no sentences, no explanation).
 Example output: "deep cobalt blue and gold tones, dramatic chiaroscuro lighting, baroque oil painting style, rich ornate textures, luxurious and mysterious atmosphere"
-Now describe this image:`
-              }
+Now describe this image:` }
             ]
           }]
         })
@@ -742,7 +879,7 @@ Now describe this image:`
     }
   }
 
-  // ─── COUNTER ──────────────────────────────────────────
+  // ─── LOCAL COUNTER (hero badge) ───────────────────────
   let totalGenerated = parseInt(localStorage.getItem('evannsTotalGen') || '0');
   const BASE_COUNT = 12847;
   function updateCounter() {
@@ -772,21 +909,15 @@ Now describe this image:`
   // ─── SURPRISE ME ──────────────────────────────────────
   const surpriseNames = ['Luna','Evanns','Zephyr','Aurora','Kira','Nox','Elara','Draven','Lyra','Orion','Seraph','Caspian','Nova','Zara','Raven'];
   const surpriseDescs = [
-    'galaxie violette avec des étoiles dorées',
-    'flammes bleues et noires mystérieuses',
-    'forêt enchantée sous la lune dorée',
-    'tempête de cristaux lumineux',
-    'coucher de soleil sur un océan doré',
-    'nuit étoilée avec aurores boréales',
-    'ville futuriste sous la pluie néon',
-    'volcans et lave incandescente'
+    'galaxie violette avec des étoiles dorées','flammes bleues et noires mystérieuses',
+    'forêt enchantée sous la lune dorée','tempête de cristaux lumineux',
+    'coucher de soleil sur un océan doré','nuit étoilée avec aurores boréales',
+    'ville futuriste sous la pluie néon','volcans et lave incandescente'
   ];
 
   function surpriseMe() {
     const name = surpriseNames[Math.floor(Math.random() * surpriseNames.length)];
     const desc = surpriseDescs[Math.floor(Math.random() * surpriseDescs.length)];
-
-    // Prefer a liked style, else random
     let picked;
     if (likedStyles.length) {
       const randLiked = likedStyles[Math.floor(Math.random() * likedStyles.length)];
@@ -794,17 +925,12 @@ Now describe this image:`
     } else {
       picked = ALL_STYLES[Math.floor(Math.random() * ALL_STYLES.length)];
     }
-
     document.getElementById('nameInput').value = name;
     document.getElementById('descInput').value = desc;
-
     selectedStyle = picked.style;
     renderStyleGrid();
-
-    // Scroll chosen style into view
     const btns = document.querySelectorAll('.style-btn');
     btns.forEach(b => { if (b.dataset.style === picked.style) b.scrollIntoView({ behavior:'smooth', block:'nearest' }); });
-
     showToast('✦ Configuration surprise appliquée !');
   }
 
@@ -847,13 +973,11 @@ Now describe this image:`
   let currentImageUrl = '';
   let currentName = '';
   let currentStyleForFeedback = '';
-  // shareImage() définie dans SMARTLINK HELPERS ci-dessus
 
   // ─── FEEDBACK SYSTEM ─────────────────────────────────
   function showFeedback() {
     const zone = document.getElementById('feedbackZone');
     zone.classList.add('visible');
-    // Reset buttons & response
     zone.querySelectorAll('.fb-btn').forEach(b => b.disabled = false);
     const resp = document.getElementById('feedbackResponse');
     resp.classList.remove('visible','green','orange','red');
@@ -865,34 +989,29 @@ Now describe this image:`
     const resp = document.getElementById('feedbackResponse');
     const styleName = ALL_STYLES.find(s => s.style === currentStyleForFeedback);
     const label = styleName ? `${styleName.emoji} ${styleName.label}` : 'ce style';
-
-    // Disable buttons after choice
     zone.querySelectorAll('.fb-btn').forEach(b => b.disabled = true);
 
     if (type === 'yes') {
       addLikedStyle(currentStyleForFeedback);
       resp.className = 'feedback-response green visible';
       resp.innerHTML = `<strong>❤️ Style mémorisé !</strong><br>
-        L'IA retient <em>${label}</em> comme l'un de tes favoris. Il sera mis en avant pour tes prochaines créations.`;
+        L'IA retient <em>${label}</em> comme l'un de tes favoris.`;
     } else if (type === 'little') {
       resp.className = 'feedback-response orange visible';
       resp.innerHTML = `<strong>🤔 Noté !</strong><br>
-        L'IA peut s'améliorer avec ce style. Essaie d'ajouter une description plus précise, ou explore un style similaire — tu peux aussi uploader une image de référence pour mieux guider le résultat.`;
+        Essaie d'ajouter une description plus précise ou uploader une image de référence.`;
     } else {
       resp.className = 'feedback-response red visible';
       resp.innerHTML = `<strong>💔 OK, on passe !</strong><br>
-        Ce style ne sera pas mémorisé. Essaie un autre style ou décris ta vision différemment. Tes styles favoris guident toujours l'IA en premier.`;
+        Ce style ne sera pas mémorisé. Explore un autre style ou décris ta vision différemment.`;
     }
 
-    // Update gallery last item feedback
     if (gallery.length) {
       gallery[0].feedback = type;
       localStorage.setItem('evannsGallery', JSON.stringify(gallery));
       renderGallery();
     }
   }
-
-  // Restauration après pub : supprimée (téléchargement direct)
 
   // ─── SEO : titre dynamique ────────────────────────────
   document.getElementById('nameInput').addEventListener('input', e => {
@@ -905,17 +1024,10 @@ Now describe this image:`
   // ─── SMARTLINK HELPERS ───────────────────────────────
   const SMART_URL = 'https://omg10.com/4/10921151';
 
-  function openSmart() {
-    window.open(SMART_URL, '_blank');
-  }
+  function openSmart() { window.open(SMART_URL, '_blank'); }
 
-  // Point 2 — Régénérer avec smartlink
-  function regenWithSmart() {
-    openSmart();
-    generateImage();
-  }
+  function regenWithSmart() { openSmart(); generateImage(); }
 
-  // Point 4 — Partager avec smartlink
   function shareImage() {
     openSmart();
     const shareUrl = window.location.href;
@@ -929,34 +1041,26 @@ Now describe this image:`
     }
   }
 
-  // Point 3 — Compte à rebours intermédiaire avant d'afficher l'image
+  // ─── COUNTDOWN ────────────────────────────────────────
   function showCountdown(callback) {
     const overlay = document.getElementById('countdownOverlay');
     const numEl   = document.getElementById('countdownNum');
     const barEl   = document.getElementById('countdownBar');
-
     overlay.classList.add('active');
-    // Ouvre smartlink dès que l'overlay apparaît
     openSmart();
-
     let count = 5;
     numEl.textContent = count;
     barEl.style.transform = 'scaleX(1)';
-
     const tick = setInterval(() => {
       count--;
       numEl.textContent = count;
       barEl.style.transform = `scaleX(${count / 5})`;
-      if (count <= 0) {
-        clearInterval(tick);
-        overlay.classList.remove('active');
-        callback();
-      }
+      if (count <= 0) { clearInterval(tick); overlay.classList.remove('active'); callback(); }
     }, 1000);
   }
 
   // ─── GENERATE ─────────────────────────────────────────
-  async function generateImage() { // already async
+  async function generateImage() {
     const name   = document.getElementById('nameInput').value.trim();
     const desc   = document.getElementById('descInput').value.trim();
     const genBtn = document.getElementById('generateBtn');
@@ -970,7 +1074,6 @@ Now describe this image:`
       return;
     }
 
-    // If user uploaded a ref image but analysis is still running, wait for it
     if (refImageData && !refImagePrompt && refAnalyzing) {
       genBtn.disabled = true;
       genBtn.textContent = '⏳   Analyse de l\'image…';
@@ -983,10 +1086,7 @@ Now describe this image:`
       });
     }
 
-    // If analysis wasn't triggered yet, try now
-    if (refImageData && !refImagePrompt) {
-      await analyzeRefImageWithClaude();
-    }
+    if (refImageData && !refImagePrompt) await analyzeRefImageWithClaude();
 
     let prompt = `A stunning premium wallpaper featuring the name "${name}" as the central typographic masterpiece, bold large decorative letters dominating the composition`;
     if (selectedStyle)  prompt += `, ${selectedStyle}`;
@@ -994,20 +1094,15 @@ Now describe this image:`
     if (refImagePrompt) prompt += `, ${refImagePrompt}`;
     prompt += ', ultra detailed, 8K resolution, professional concept art, masterful composition, award-winning digital artwork';
 
-    // Add liked styles as soft influence
     if (likedStyles.length && !likedStyles.includes(selectedStyle)) {
       const extraStyle = ALL_STYLES.find(s => likedStyles.includes(s.style));
       if (extraStyle) prompt += `, subtle hints of ${extraStyle.style}`;
     }
 
     currentStyleForFeedback = selectedStyle;
-
     genBtn.disabled = true;
     genBtn.textContent = '✦   Création en cours…';
     showLoading();
-    sessionStorage.removeItem('evannsDL');
-
-    // Hide feedback zone
     document.getElementById('feedbackZone').classList.remove('visible');
     document.getElementById('feedbackResponse').classList.remove('visible');
 
@@ -1033,21 +1128,6 @@ Now describe this image:`
 
   function hideLoading() { document.getElementById('loadingState').classList.remove('active'); }
 
-  function attachDownload(dlBtn, imageUrl, name) {
-    dlBtn.onclick = (e) => {
-      e.preventDefault();
-      // 1. Pub dans nouvel onglet — immédiatement dans le onclick (jamais bloqué)
-      window.open('https://omg10.com/4/10921151', '_blank');
-      // 2. Téléchargement direct via <a> — pas besoin de fetch, pas de délai
-      const a = document.createElement('a');
-      a.href = imageUrl;
-      a.download = `evanns-name-${name.toLowerCase().replace(/\s+/g,'-')}.png`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    };
-  }
-
   function showResult(imageUrl, name) {
     const img    = document.getElementById('resultImg');
     const wrap   = document.getElementById('imgWrap');
@@ -1057,12 +1137,14 @@ Now describe this image:`
     img.classList.remove('loaded');
 
     img.onload = () => {
-      // Point 3 : compte à rebours avant d'afficher l'image
       showCountdown(() => {
         hideLoading();
         wrap.style.display = 'block';
         setTimeout(() => img.classList.add('loaded'), 50);
         dlWrap.style.display = 'flex';
+
+        // ── Incrémente le compteur global partagé ──
+        incrementGlobalCounter();
 
         totalGenerated++;
         localStorage.setItem('evannsTotalGen', totalGenerated);
@@ -1081,7 +1163,6 @@ Now describe this image:`
           document.body.removeChild(a);
         };
 
-        // Show feedback after a short delay
         setTimeout(() => showFeedback(), 800);
       });
     };
